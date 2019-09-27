@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 4 Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+   crossorigin=""></script>
+  
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <style>
+ 
+
+ 
+	html, body {
+		height: 100%;
+		background-image: url('sample3.jpg');
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+    background-size:cover !important;
+	}
+
+	.full-height {
+	  height: 100%;
+	}
+	
+	.overlay-bg{
+		background-color: rgba(0,0,0,0.4);
+	}
+	
+	.video-bg {
+  position: relative;
+  background-color: black;
+  height: 100vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+
+.video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.video-bg .container {
+  position: relative;
+  z-index: 2;
+}
+
+.video-bg .overlay {
+  background-color: black;
+	opacity: 0.5;
+	z-index: 1;
+}
+
+	
+	.svgposition{
+		position:absolute !important;
+		bottom: -1px;
+		left: 10%;
+	}
+	
+	.parallax{
+
+		/*background-image: url('src/img/parallax-bg.jpg');*/
+		/* Create the parallax scrolling effect */
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	
+	
+	.title-big{
+		font-size: 130px;
+	} 
+	
+	.about-title{
+		font-family: "Gotham", sans-serif;
+		font-weight: 700;
+	}
+	
+	.title-padding{
+		margin-bottom: 30px;
+		margin-top: 30px;
+	}
+	
+	.custom-pills a{
+		width: 90px;
+		height: 90px;
+		text-align:center;
+		border-radius: 50% !important;
+		margin-left: 20px
+	}
+	
+	.custom-pills .nav-link{
+		line-height: 65px !important; 
+	}
+	
+	.custom-offer a{
+		border-bottom: 5px solid #333;
+		margin-left: 10px;
+	}
+	
+	.custom-offer .active{
+		border-bottom: 5px solid blue;
+	}
+  
+  
+	.padding-content{
+	    margin-left: 5rem;
+		margin-top: -8rem;
+
+	}
+	
+	
+	.custom-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+.centered {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  padding: 0px 0px 14px 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  transition: all 0.5s;
+  z-index: 997;
+}
+
+#header hr {
+  border-color: rgba(255, 255, 255, 0.3);
+  margin-top: 5px;
+}
+
+.header-top {
+  height: 24px;
+  margin-top: 5px;
+}
+
+.header-top a {
+  color: #fff;
+  font-size: 12px;
+}
+
+.top-head-left ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.top-head-right {
+  text-align: right;
+}
+
+.top-head-right ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.top-head-right ul li a {
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.top-head-right ul li:hover a {
+  color: #fab700;
+}
+
+.top-head-right .lnr {
+  display: none;
+}
+
+@media (max-width: 736px) {
+  .top-head-right .lnr {
+    display: block;
+  }
+  .top-head-right span {
+    display: none;
+  }
+}
+
+#header.header-scrolled {
+  background: rgba(0, 0, 0, 0.8);
+  transition: all 0.5s;
+}
+
+@media (max-width: 673px) {
+  #logo {
+    margin-left: 20px;
+  }
+}
+
+#header #logo h1 {
+  font-size: 34px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+#header #logo h1 a, #header #logo h1 a:hover {
+  color: #fff;
+  padding-left: 10px;
+  border-left: 4px solid #fab700;
+}
+
+#header #logo img {
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #header #logo h1 {
+    font-size: 28px;
+  }
+  #header #logo img {
+    max-height: 40px;
+  }
+}
+
+.menu-has-children ul li a {
+  padding: 4px 10px !important;
+  text-transform: uppercase !important;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Nav Menu Essentials */
+.nav-menu, .nav-menu * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-menu ul {
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+  z-index: 99;
+}
+
+.nav-menu li {
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-menu > li {
+  float: left;
+}
+
+.nav-menu li:hover > ul,
+.nav-menu li.sfHover > ul {
+  display: block;
+}
+
+.nav-menu ul ul {
+  top: 0;
+  left: 100%;
+}
+
+.nav-menu ul li {
+  min-width: 180px;
+  text-align: left;
+}
+
+/* Nav Menu Arrows */
+.sf-arrows .sf-with-ul {
+  padding-right: 30px;
+}
+
+.sf-arrows .sf-with-ul:after {
+  content: "\f107";
+  position: absolute;
+  right: 15px;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.sf-arrows ul .sf-with-ul:after {
+  content: "\f105";
+}
+
+/* Nav Meu Container */
+#nav-menu-container {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #nav-menu-container {
+    display: none;
+  }
+}
+
+/* Nav Meu Styling */
+.nav-menu a {
+  padding: 6px 10px;
+  text-decoration: none;
+  display: inline-block;
+  color: #fff;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.nav-menu > li {
+  margin-left: 10px;
+}
+
+.nav-menu ul {
+  margin: 14px 0 0 0;
+  padding: 10px;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  background: #fff;
+}
+
+.nav-menu ul li {
+  transition: 0.3s;
+}
+
+.nav-menu ul li a {
+  padding: 10px;
+  color: #333;
+  transition: 0.3s;
+  display: block;
+  font-size: 12px;
+  text-transform: none;
+}
+
+.nav-menu ul li:hover > a {
+  color: #fab700;
+}
+
+.nav-menu ul ul {
+  margin: 0;
+}
+
+
+
+/*
+################
+               End Blog Home  Page style
+################
+*/
+  
+  
+.image-flip:hover .backside,
+.image-flip.hover .backside {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    border-radius: .25rem;
+}
+
+.image-flip:hover .frontside,
+.image-flip.hover .frontside {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.mainflip {
+    -webkit-transition: 1s;
+    -webkit-transform-style: preserve-3d;
+    -ms-transition: 1s;
+    -moz-transition: 1s;
+    -moz-transform: perspective(1000px);
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transition: 1s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.frontside {
+    position: relative;
+    -webkit-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    z-index: 2;
+    margin-bottom: 30px;
+}
+
+.backside {
+	width: 350px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+    -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+    box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+}
+
+.frontside,
+.backside {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transition: 1s;
+    -moz-transform-style: preserve-3d;
+    -o-transition: 1s;
+    -o-transform-style: preserve-3d;
+    -ms-transition: 1s;
+    -ms-transform-style: preserve-3d;
+    transition: 1s;
+    transform-style: preserve-3d;
+}
+
+.frontside .card,
+.backside .card {
+    min-height: 312px;
+}
+
+.backside .card a {
+    font-size: 18px;
+    color: #007b5e !important;
+}
+
+.frontside .card .card-title,
+.backside .card .card-title {
+    //color: #007b5e !important;
+	color: #fff;
+}
+
+.frontside .card .card-body img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+
+.roundedImg{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	color: #fff;
+}
+
+.borderLeft{
+	border-left: 5px solid #007b5e;
+}
+
+.borderRight{
+	border-right: 5px solid #007b5e;
+}
+
+.img-circle{
+border-radius: 50%;
+width: 200px;
+height: 200px;
+}
+
+/*
+################
+               End Blog Details  Page style
+################
+*/
+
+	.icon-green{
+		color: #30c787;
+	}
+	
+	.icon-orange{
+		color: #ffc65e;
+	}
+	
+	.icon-blue{
+		color: #3f82e5;
+	}
+	
+	.icon-purple{
+		color: #796eff;
+	}
+  
+	.icon-magenta{
+		color: #e0487b;
+	}
+	
+/*Contact*/
+
+.register{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff,transparent, transparent,transparent,#00c6ff);
+    padding: 3%;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+}  
+
+
+.image-holder{
+	height: 100vh;
+	width: 100%;
+	box-shadow: 20px 0px 15px #bbbaba;
+}
+
+
+/*skew*/
+.services-card{
+background-color: red;
+
+height: 280px;
+
+transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(20px, -20px);
+
+box-shadow: -50px 50px 50px rgb(0, 0, 0, 0.5);
+
+margin-top: 20%;
+
+margin-left: 6%;
+}
+
+
+
+.buildup-text-white{
+	color: #fff !important;
+}
+
+.buildup-text{
+	width: 370px;
+    margin: auto;
+    border-bottom: 1px solid #d8d8d8;
+    padding-top: 5%;
+    letter-spacing: 4px;
+	color: #79799a;
+}
+
+.header-padding{
+	padding-top: 1%;
+	padding-bottom: 3%;
+	color: #79799a;
+}
+
+.header-text{
+	letter-spacing: 10px;
+}
+
+.header-text-white{
+  color: #fff !important;
+  
+}
+
+
+.about-us{
+	background-image: linear-gradient(to left bottom,transparent, #fff, #4db6ac);
+}
+
+.offer-section{
+	background-image: linear-gradient(to top left,transparent, #fff, #4db6ac)
+}
+
+.services-section{
+	background-image: linear-gradient(to top right,#02c0fc,#fff, transparent)
+}
+
+.references-section{
+
+	background-image: linear-gradient(to bottom right,#02c0fc,#fff, transparent);
+}
+
+
+.double-border{
+	text-transform: uppercase;
+	letter-spacing: .5em;
+	border: 4px double rgba(255,255,255,.25);
+	border-width: 4px 0;
+	width: 100%;
+	margin: auto;
+	padding: 50px;
+	font-size: 45px;
+	font-weight: 800;
+	text-shadow: 2px 2px 10px #7b8c8b;
+}
+
+.font-custom{
+	font-weight: 800;
+	color: #008bff;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.offer-video{
+	border: 1px solid #52b8ae;
+	box-shadow: 2px 2px 10px #000304;
+}
+
+.offer-text{
+	font-size: 90px;
+	letter-spacing: 20px;
+	font-weight: 800;
+}
+
+  .call-to-action{
+	background-color: #f8f9fa;
+	margin-top: 20px;
+	padding: 10px;
+	width: 180px;
+	border-radius: 25px;
+	color: #333;
+  }
+  
+  .call-to-services{
+	background-color: #008bff;
+	margin-top: 20px;
+	padding: 10px;
+	width: 180px;
+	border-radius: 25px;
+	color: #fff;
+  }
+  
+  .left-border{
+  border-left: 5px solid #28a745;
+  }
+  
+  .subscribe-icon{
+	font-size: 10rem;
+  }
+  
+  .aligned-section{
+	padding-top: 5%;
+  
+  }
+  
+  .whiteBg{
+	background-color: #fff;
+  }
+  
+  .margin-top-footer{
+	margin-top:50px;
+  }
+
+	.image-border{
+		border: 1px solid #4db6ac;
+		box-shadow: 2px 2px 2px #333;
+	}
+  
+  </style>
+</head>
+<body>
+
+
+<header id="header">
+<div class="container header-top">
+<div class="row">
+<div class="col-6 top-head-left">
+<ul>
+
+<li><a href="#"><i class="fab fa-facebook"></i></a></li>
+<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+<li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+<li><a href="#"><i class="fab fa-behance"></i></a></li>
+</ul>
+</div>
+<div class="col-6 top-head-right">
+<ul>
+<li><a href="tel:+880 012 3654 896"><span>+880 012 3654 896</span> <span class="lnr lnr-phone-handset"></span></a></li>
+<li><a href="#">Get in touch!</a></li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row align-items-center justify-content-between d-flex">
+<div id="logo">
+<a href="https://colorlib.com/preview/theme/security/index.html"><img width="110px" src="DS-Logo2.png" alt="" title=""></a>
+</div>
+<nav id="nav-menu-container">
+<ul class="nav-menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+<li class="menu-active"><a href="https://colorlib.com/preview/theme/security/inxed.html">Home</a></li>
+<li><a href="https://colorlib.com/preview/theme/security/about.html">About Us</a></li>
+<li><a href="https://colorlib.com/preview/theme/security/service.html">Service</a></li>
+<li><a href="https://colorlib.com/preview/theme/security/team.html">Team</a></li>
+<li><a href="https://colorlib.com/preview/theme/security/price.html">Price</a></li>
+<li><a href="https://colorlib.com/preview/theme/security/blog-home.html">Blog</a></li>
+<li><a href="https://colorlib.com/preview/theme/security/contact.html">Contact</a></li>
+<li class="menu-has-children"><a href="" class="sf-with-ul">Pages</a>
+<ul style="display: none;">
+<li><a href="https://colorlib.com/preview/theme/security/blog-single.html">blog Single</a></li>
+<li><a href="https://colorlib.com/preview/theme/security/elements.html">Elements</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
+
+<div class="parallax-wrapper full-height parallax video-bg "" >
+	  <video class="overlay" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+
+    <source src="src/video/backgroundvideo.mp4" type="video/mp4">
+  </video>
+  <div class="container h-100 ">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white ">
+		<p class="double-border home-title header_animation">
+			The best way to display
+		  <span class="middle-text">
+			Video walls
+		  </span>
+		</p>
+		<button type="button" class="btn call-to-action header_button_animation">Get in Touch!</button>
+      </div>
+    </div>
+  </div>
+	<div class="container text-center svgposition">
+		<svg xmlns="http://www.w3.org/2000/svg" width="401" height="55" viewBox="0 0 401 54.5">
+		<style type="text/css">.st1{fill:#FFFFFF;}</style>
+		<path class="st1" d="M200.5 0C311.2 0 319.9 54.5 401 54.5H0C81.1 54.5 89.8 0 200.5 0z"></path></svg>	
+ 
+	</div>
+
+</div>
+
+<div class="parallax-wrapper full-height" >
+	<div class="container-fluid full-height about-us">
+		<div class="row " >
+			<div class="col" >
+				<div class="col  " >
+						<img class="services-card" src="services-tab-image.jpg" />
+					</div>
+			</div>
+			
+			<div class="col" >
+			  <h2 class="title-big title-padding font-custom">ABOUT US</h2>
+				<br>
+				<!-- Nav pills -->
+			  <ul class="nav nav-pills custom-pills" role="tablist">
+				<li class="nav-item">
+				  <a class="nav-link active" data-toggle="pill" href="#home">About</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" data-toggle="pill" href="#menu1">Team</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" data-toggle="pill" href="#menu2">Strategy</a>
+				</li>
+			  </ul>
+
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+				<div id="home" class="container tab-pane active"><br>
+				  <h3>HOME</h3>
+				  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				</div>
+				<div id="menu1" class="container tab-pane fade"><br>
+				  <h3>Menu 1</h3>
+				  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+				<div id="menu2" class="container tab-pane fade"><br>
+				  <h3>Menu 2</h3>
+				  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+				</div>
+			  </div>
+			</div>
+			
+		</div>
+		
+			<!-- <svg version="1.1" id="bottomVector" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+				 xml:space="preserve">
+				<style type="text/css">
+					.st0{fill:red;}
+				</style>
+				<title>Rectangle 3</title>
+				<desc>Created with Sketch.</desc>
+				<path class="st0" d="M685.6,38.8C418.7-11.1,170.2,9.9,0,30v96h1440V30C1252.7,52.2,1010,99.4,685.6,38.8z"/>
+			</svg> -->	
+
+
+	</div>
+				<!-- <svg class="card-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+						<polygon fill="white" points="0,100 100,0 100,100"/>
+					</svg> -->
+</div>
+
+<!-- WHAT WE OFFER SECTION -->
+<div class="parallax-wrapper offer-section" >
+	<div class="container-fluid">
+		<div class="row" >
+		
+			<div class="col" >
+			  
+				<br>
+				<!-- Nav pills -->
+			  <ul class="nav justify-content-end custom-offer" role="tablist">
+				<li class="nav-item">
+				  <a class="nav-link active" data-toggle="pill" href="#offer1"></a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" data-toggle="pill" href="#offer2"></a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" data-toggle="pill" href="#offer3"></a>
+				</li>
+			  </ul>
+
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+				<div id="offer1" class="row tab-pane active"><br>
+
+				<div class="container-fluid how-section1">
+                    <div class="row">
+					    <div class="col-md-6">
+							<video class="offer-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="width: 740px;">
+
+								<source src="src/video/backgroundvideo.mp4" type="video/mp4">
+							</video>
+                         </div>
+                        <div class="col-md-6">
+						<h2 class="text-center offer-text font-custom">What We Offer?</h2>
+						<div class="col-sm-12" >
+							    <h4>Firm ware upgrade</h4>
+								<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+							</div>
+							<div class="col-sm-12" >
+									<h4>Pan-European Deployment</h2>
+									<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+							</div>
+						 </div>
+                    </div>
+                </div>
+
+				</div>
+				<div id="offer2" class="container tab-pane fade"><br>
+                    <div class="row">
+                        <div class="col-md-6 how-img">
+                            <i class="fas fa-chalkboard-teacher sized-icon icon-magenta icon-padding" ></i>
+                        </div>
+                        <div class="col-md-6">
+                            
+							<h4>Software Installation</h2><br>
+							<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-6">
+                            <h4>Support & Services</h4>
+							<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+                        </div>
+						<div class="col-md-6 how-img">
+                            <i class="fas fa-info-circle sized-icon icon-orange icon-padding"></i>
+                        </div>
+                    </div>
+				</div>
+				<div id="offer3" class="container tab-pane fade"><br>
+				  <div class="row">
+                        <div class="col-md-6 how-img">
+                            <i class="fas fa-tasks sized-icon icon-blue icon-padding"></i>
+                        </div>
+                        <div class="col-md-6">
+                            
+							<h4>Project Management</h2><br>
+							<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-6">
+                            <h4>Installation</h4>
+							<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+                        </div>
+						<div class="col-md-6 how-img">
+                            <i class="fas fa-network-wired sized-icon icon-green icon-padding"></i>
+                        </div>
+                    </div>
+				</div>
+			  </div>
+			</div>
+		</div>
+		<br />
+		<div class="row" >
+				<div class="col-sm-3" >
+					<img class="image-border" src="sample1.png" width="300px" height="250px"/>
+				</div>
+				<div class="col-sm-3" >
+					<img class="image-border" src="sample2.jpg" width="300px" height="250px"/>
+				</div>
+				<div class="col-sm-3" >
+					<img class="image-border" src="sample3.jpg" width="300px" height="250px"/>
+				</div>
+				<div class="col-sm-3" >
+					<img class="image-border" src="sample4.jpg" width="300px" height="250px"/>
+				</div>
+			</div>
+	</div>
+</div>
+<!-- SERVICES -->
+<div class="parallax-wrapper fullheight services-section" >
+	<div class="container-fluid " >
+		<div class="row text-center ">
+			<div class="col-sm-4 " ><br />
+				<img src="sample3.jpg" class="image-holder image-border" />					
+			</div>	
+			<div class="col-sm-8 pl-5"><br />
+				<p class="text-center buildup-text buildup-text-white slideanim-Y-inv"> Learn more about our services!</p>
+				<h2 class="text-center header-padding header-text white-header slideanim-Y-inv offer-text font-custom">SERVICES</h2>
+				<br />
+				<div class="row" >
+					<div class="col text-left left-border">
+						<h4 class="card-title">From High-quality displays to Digital signage servers</h4>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt <br/>
+						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation </p>
+						
+					</div>
+				</div>
+				<div class="row"><br />
+					<div class="col text-left left-border"><br />
+						<h4 class="card-title">Support & Services</h2>
+						<p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt <br />
+						ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+					</div>
+				</div>
+				<div class="col-sm-12" >
+					<button type="button" class="btn call-to-services header_button_animation">More services</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<!-- REFERENCES -->
+<div class="container-fluid h-100 references-section">
+
+		<div class="row aligned-section" >
+			<div class="col" >
+				<h2 class="text-center header-padding header-text white-header slideanim-Y-inv offer-text font-custom">REFERENCES</h2>	
+				
+				<div class="row"><br />
+					<div class="col text-left "><br />
+						<h4 class="card-title">You can find us from Restaurants, to Airports</h2>
+						<p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt <br />
+						ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+						<p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt <br />
+						ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+					</div>
+				</div>
+				
+			</div>
+			<div class="col" >
+				<br />
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+				  <!-- Indicators -->
+				  <ul class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				  </ul>
+				  
+				  <!-- The slideshow -->
+				  <div class="carousel-inner">
+					<div class="carousel-item active">
+					  <img src="sample1.png" alt="Los Angeles" width="100%" height="500">
+					</div>
+					<div class="carousel-item">
+					  <img src="sample2.jpg" alt="Chicago" width="100%" height="500">
+					</div>
+					<div class="carousel-item">
+					  <img src="sample3.jpg" alt="New York" width="100%" height="500">
+					</div>
+				  </div>
+				  
+				  <!-- Left and right controls -->
+				  <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+					<span class="carousel-control-prev-icon"></span>
+				  </a>
+				  <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+					<span class="carousel-control-next-icon"></span>
+				  </a>
+				</div>
+			</div>
+		</div>
+
+
+</div>
+
+
+<div class="container-fluid">
+<div class="row register">
+                    <div class="col-md-4 register-left">
+                        <i class="fab fa-mailchimp subscribe-icon"></i>
+
+                        <h3>Interested?</h3>
+                        <p>Subscribe to our newsletter and get our latest news!</p>
+                        <input type="submit" name="" value="Subscribe"/><br/>
+                    </div>
+                    <div class="col-md-8 register-right">
+                        
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Get in touch!</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Email address *" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+										<textarea class="form-control" placeholder="Your message" rows="5" id="comment"></textarea>
+										
+                                        <input type="submit" class="btnRegister"  value="Send Now"/>
+                                    </div>
+                                </div>
+                            </div>
+                       
+                        </div>
+                    </div>
+                
+
+            </div>
+
+</div>
+
+<!-- FOOTER -->
+<!-- FOOTER -->
+<div class="footer whiteBg">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 col-xs-12 about-company margin-top-footer">
+	<img src="DS-Logo2.png" style="width:380px"/>
+		
+      <p class="pr-5 text-white-50"><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis </p>
+      
+    </div>
+    <div class="col-lg-7 col-xs-12 links margin-top-footer">
+
+		<div id="mapid" class="slideanim-X" style="width: 100%; height: 200px;"></div>
+		<script>
+
+			var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+				maxZoom: 18,
+				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+					'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+					'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+				id: 'mapbox.streets'
+			}).addTo(mymap);
+			
+			var template = "";
+			
+			L.marker([51.5, -0.09]).addTo(mymap)
+				.bindPopup("<b>One of our reference work!</b><br />Here comes the details, even some pictures!")
+			
+			//var popup = L.popup();
+
+		</script>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col copyright">
+      <p class=""><small class="text-white-50">© 2019. All Rights Reserved.</small></p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script>
+// Get the video
+var video = document.getElementById("myVideo");
+
+// Get the button
+var btn = document.getElementById("myBtn");
+
+// Pause and play the video, and change the button text
+function myFunction() {
+  if (video.paused) {
+    video.play();
+    btn.innerHTML = "Pause";
+  } else {
+    video.pause();
+    btn.innerHTML = "Play";
+  }
+}
+
+document.getElementById('myVideo').addEventListener('ended',myHandler,false);
+    function myHandler(e) {
+        alert("LOADED");
+		document.getElementById("overlay").style.display = "none";
+    };
+	
+
+
+</script>
+
+</body>
+</html>
